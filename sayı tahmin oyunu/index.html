@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>sayı tahmin oyunu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="conteiner">
+
+        <form action="">
+            <input type="text" class="txt" placeholder="Sayı Giriniz" id="txt">
+            <label id="lbl">kalan hak : 10</label>
+            <label id="lbl2" class="lbl2"></label>
+            <input type="button" value="Kontrol et" id="btn" class="btn">
+        </form>
+
+    </div>
+    <script>
+
+        //random sayı
+        r = Math.floor(Math.random() * 100) + 1;
+
+        //tanımlamalar
+        var txt = document.getElementById('txt');
+        var lbl = document.getElementById('lbl');
+        var lbl2 = document.getElementById('lbl2');
+        var btn = document.getElementById('btn');
+        var hak = 10;
+
+        //click olayı
+        btn.addEventListener('click', function () {
+
+            //sayı girildikçe oluşacak koşullar
+            if (r < txt.value) {
+                lbl2.textContent = "Biraz aşşağı";
+                txt.value = "";
+            }
+
+            else if (r > txt.value) {
+                lbl2.textContent = "Biraz yukarı";
+                txt.value = "";
+            }
+
+            if (r == txt.value) {
+                lbl2.textContent = "KAZANDIN!";
+                txt.value = "";
+            }
+
+            if (hak == 0) {
+                lbl2.textContent = "KAYBETTİN!";
+                txt.value = "";
+            }
+
+            //hak azaltma
+            hak--;
+            lbl.textContent = "Kalan hak : " + hak;
+        });
+
+    </script>
+
+</body>
+
+</html>
